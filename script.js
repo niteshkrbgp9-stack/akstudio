@@ -3,6 +3,7 @@ let heroSlides = [];
 let heroSliderTimer = null;
 let heroAnimationStarted = false;
 var preloaderStartedAt = Date.now();
+var preloaderZoomStarted = false;
 
 function startHeroAnimations() {
     if (heroAnimationStarted) return;
@@ -78,6 +79,14 @@ function dismissPreloader() {
     }, 650);
 }
 
+function startPreloaderZoom() {
+    var preloader = document.getElementById('preloader');
+    if (!preloader || preloaderZoomStarted) return;
+
+    preloaderZoomStarted = true;
+    preloader.classList.add('zoom-sequence');
+}
+
 (function initPreloader() {
     var preloader = document.getElementById('preloader');
     if (!preloader) {
@@ -86,18 +95,26 @@ function dismissPreloader() {
     }
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var minDuration = reduceMotion ? 0 : 15000;
+    var loadingDuration = reduceMotion ? 0 : 10000;
+    var zoomDuration = reduceMotion ? 0 : 5000;
+    var totalDuration = loadingDuration + zoomDuration;
+
+    function schedulePhase(fn, targetTime) {
+        var elapsed = Date.now() - preloaderStartedAt;
+        var remaining = Math.max(0, targetTime - elapsed);
+        window.setTimeout(fn, remaining);
+    }
 
     function scheduleDismissal() {
-        var elapsed = Date.now() - preloaderStartedAt;
-        var remaining = Math.max(0, minDuration - elapsed);
-        window.setTimeout(dismissPreloader, remaining);
+        schedulePhase(dismissPreloader, totalDuration);
     }
 
     window.addEventListener('load', function () {
+        schedulePhase(startPreloaderZoom, loadingDuration);
         scheduleDismissal();
     });
 
+    schedulePhase(startPreloaderZoom, loadingDuration);
     scheduleDismissal();
 })();
 
