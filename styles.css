@@ -2661,6 +2661,10 @@ body.menu-open {
     opacity: 0.86;
 }
 
+.footer-credit strong {
+    color: #ffb08c;
+}
+
 /* Modal */
 .modal {
     display: none;
