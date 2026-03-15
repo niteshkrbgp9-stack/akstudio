@@ -1,0 +1,25 @@
+# Robots.txt for SEO
+# Controls search engine crawlers
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /.env
+Disallow: /node_modules
+Disallow: /server.js
+
+# Crawl delay (in seconds)
+Crawl-delay: 1
+
+# Specific search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location (update with your domain)
+Sitemap: https://yourdomain.com/sitemap.xml
