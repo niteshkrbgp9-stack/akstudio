@@ -95,8 +95,8 @@ function startPreloaderZoom() {
     }
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var loadingDuration = reduceMotion ? 0 : 10000;
-    var zoomDuration = reduceMotion ? 0 : 5000;
+    var loadingDuration = reduceMotion ? 0 : 7000;
+    var zoomDuration = reduceMotion ? 0 : 3000;
     var totalDuration = loadingDuration + zoomDuration;
 
     function schedulePhase(fn, targetTime) {
@@ -110,13 +110,52 @@ function startPreloaderZoom() {
     }
 
     window.addEventListener('load', function () {
-        schedulePhase(startPreloaderZoom, loadingDuration);
+        if (zoomDuration > 0) {
+            schedulePhase(startPreloaderZoom, loadingDuration);
+        }
         scheduleDismissal();
     });
 
-    schedulePhase(startPreloaderZoom, loadingDuration);
+    if (zoomDuration > 0) {
+        schedulePhase(startPreloaderZoom, loadingDuration);
+    }
     scheduleDismissal();
 })();
+
+function initFaqAccordion() {
+    var faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(function (item) {
+        var question = item.querySelector('.faq-question');
+        var answer = item.querySelector('.faq-answer');
+        if (!question || !answer) return;
+
+        var isInitiallyOpen = question.getAttribute('aria-expanded') === 'true';
+        item.classList.toggle('is-open', isInitiallyOpen);
+        answer.classList.toggle('faq-open', isInitiallyOpen);
+
+        question.addEventListener('click', function () {
+            var isOpen = question.getAttribute('aria-expanded') === 'true';
+
+            faqItems.forEach(function (otherItem) {
+                var otherQuestion = otherItem.querySelector('.faq-question');
+                var otherAnswer = otherItem.querySelector('.faq-answer');
+                if (!otherQuestion || !otherAnswer) return;
+
+                otherQuestion.setAttribute('aria-expanded', 'false');
+                otherItem.classList.remove('is-open');
+                otherAnswer.classList.remove('faq-open');
+            });
+
+            if (!isOpen) {
+                question.setAttribute('aria-expanded', 'true');
+                item.classList.add('is-open');
+                answer.classList.add('faq-open');
+            }
+        });
+    });
+}
 
 function initScrollReveal() {
     var sections = document.querySelectorAll('section:not(.hero)');
@@ -516,6 +555,13 @@ window.openBookingForm = function (packageName, price) {
     modal.classList.add('active');
 };
 
+window.openWhatsAppBooking = function (itemName) {
+    var phoneNumber = '919199076247';
+    var message = 'Hi, I want to book ' + itemName + ' from Capture Creation Studio. Please share details.';
+    var url = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+    window.open(url, '_blank');
+};
+
 window.closeBookingForm = function () {
     var modal = document.getElementById('bookingModal');
     if (modal) {
@@ -524,7 +570,7 @@ window.closeBookingForm = function () {
 };
 
 window.openContactForm = function () {
-    alert('Please contact us directly:\n\nPhone: +91-9199076247\nWhatsApp: Click the WhatsApp button below\n\nWe will create a customized quote for you!');
+    window.openWhatsAppBooking('Custom Wedding Package');
 };
 
 window.exportBookingsAsCSV = function () {
@@ -573,6 +619,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initMobileMenu();
     initHeroSlider();
     initTestimonialsSlider();
+    initFaqAccordion();
     initBookingForm();
     initSmoothScroll();
     initFocusStyles();
