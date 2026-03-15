@@ -291,6 +291,16 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--white);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 .container {
@@ -313,6 +323,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .logo {
@@ -333,6 +344,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -366,15 +378,35 @@ body {
 .hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
     cursor: pointer;
+    padding: 0;
 }
 
 .hamburger span {
     width: 25px;
     height: 3px;
     background: var(--white);
-    margin: 5px 0;
+    margin: 2px 0;
     transition: var(--transition);
+}
+
+.hamburger.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -403,6 +435,13 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     transition: opacity 1s ease, transform 6s ease;
+}
+
+.deferred-bg {
+    background-color: #dde3ea;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-slide.active {
@@ -970,6 +1009,8 @@ body {
     font-size: 0.85rem;
     z-index: 10;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    max-width: calc(100% - 30px);
+    text-align: center;
 }
 .premium-showcase .showcase-grid {
     display: grid;
@@ -1310,6 +1351,34 @@ body {
     gap: 2rem;
 }
 
+.booking-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 1.25rem 0 0;
+}
+
+.booking-action-card {
+    text-align: center;
+    padding: 1.4rem;
+    border-radius: 20px;
+}
+
+.booking-action-whatsapp {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.booking-action-call {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.booking-action-label {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.9rem;
+}
+
 .whatsapp-booking-section h2 {
     color: var(--white);
     font-size: 2.5rem;
@@ -1337,6 +1406,47 @@ body {
     transition: var(--transition);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+.call-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    min-height: 58px;
+    padding: 0.9rem 1.2rem;
+    background: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: var(--transition);
+    box-shadow: 0 8px 22px rgba(123, 33, 25, 0.22);
+}
+
+.call-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.booking-summary {
+    width: min(100%, 760px);
+    background: #f39c12;
+    color: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.booking-summary p {
+    margin: 0.4rem 0;
+}
+
+.booking-summary-amount {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .whatsapp-btn:hover {
@@ -1536,6 +1646,10 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
+}
+
+.map-container iframe {
+    display: block;
 }
 
 /* Testimonials Section */
@@ -1848,18 +1962,53 @@ body {
     }
 
     .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 16px;
+        left: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.35rem;
+        padding: 0.8rem;
+        background: rgba(20, 30, 45, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    .nav-links.nav-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .nav-links a::after {
         display: none;
     }
 
     .hero {
-        min-height: auto;
+        min-height: min(100svh, 760px);
     }
 
     .hero-layout {
         flex-direction: column;
         align-items: flex-start;
         gap: 2rem;
-        padding-top: 3rem;
+        padding-top: 6rem;
         padding-bottom: 3rem;
     }
 
@@ -1889,6 +2038,10 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .package-card {
+        padding: 1.5rem;
+    }
+
     .package-card.featured {
         transform: scale(1);
     }
@@ -1899,6 +2052,20 @@ body {
 
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-actions,
+    .contact-grid,
+    .testimonials-grid,
+    .testimonials-reviews .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .whatsapp-btn,
+    .call-btn {
+        width: 100%;
+        font-size: 1rem;
+        padding-inline: 1rem;
     }
 
     .form-row {
@@ -1912,15 +2079,36 @@ body {
     .services-grid {
         grid-template-columns: 1fr;
     }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .gallery-item,
+    .product-image {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .premium-showcase .showcase-image,
+    .wedding-showcase .showcase-image {
+        height: 260px;
+    }
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        padding: 0.85rem 0;
+    }
+
     .hero h1 {
         font-size: 2.2rem;
+        line-height: 1.02;
     }
 
     .hero-kicker {
         font-size: 0.7rem;
+        letter-spacing: 0.12em;
     }
 
     .hero-actions {
@@ -1951,11 +2139,70 @@ body {
     }
 
     .nav-links {
-        gap: 1rem;
+        left: 12px;
+        right: 12px;
     }
 
     section {
         padding: 3rem 0 !important;
+    }
+
+    .hero-layout {
+        padding-top: 5.5rem;
+        gap: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.96rem;
+        line-height: 1.7;
+    }
+
+    .package-card {
+        padding: 1.15rem;
+        border-radius: 18px;
+    }
+
+    .package-header h3,
+    .product-card h3,
+    .premium-showcase .showcase-info h3,
+    .wedding-showcase .showcase-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .discount-badge {
+        top: 12px;
+        right: 12px;
+        font-size: 0.7rem;
+        padding: 0.45rem 0.7rem;
+    }
+
+    .gallery-item,
+    .gallery-large,
+    .gallery-small,
+    .product-image,
+    .premium-showcase .showcase-image,
+    .wedding-showcase .showcase-image {
+        min-height: 220px;
+        height: 220px;
+    }
+
+    .booking-action-card,
+    .booking-summary,
+    .contact-card,
+    .testimonial-card {
+        padding: 1rem;
+    }
+
+    .booking-summary {
+        border-radius: 16px;
+    }
+
+    .contact-link {
+        font-size: 1rem !important;
+    }
+
+    .map-container iframe {
+        height: 280px;
     }
 }
 
