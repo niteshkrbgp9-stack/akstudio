@@ -67,8 +67,17 @@
         <div class="container hero-layout">
             <div class="hero-content hero-content-active">
                 <span class="hero-kicker anim-slide-in">Wedding Photography in Bhagalpur</span>
-                <h1 class="anim-slide-in" style="animation-delay: 0.15s;">Wedding stories captured with <span class="typing-text" data-text="candid frames, cinematic films, and premium albums."></span></h1>
-                <p class="anim-slide-in" style="animation-delay: 0.3s;">Capture Creation Studio covers haldi, wedding rituals, reception portraits, reels, albums, and framed prints with a clean edit style built for real family memories.</p>
+                <h1 class="anim-slide-in hero-title" style="animation-delay: 0.15s;">
+                    <span class="hero-title-static">Wedding stories captured with</span>
+                    <span class="typing-line typing-text" data-text="candid frames,"></span>
+                    <span class="typing-line typing-text" data-text="cinematic films,"></span>
+                    <span class="typing-line typing-text" data-text="and premium albums."></span>
+                </h1>
+                <p class="anim-slide-in hero-description" style="animation-delay: 0.3s;">
+                    <span class="typing-line hero-copy-line" data-text="Capture Creation Studio covers haldi, wedding rituals,"></span>
+                    <span class="typing-line hero-copy-line" data-text="reception portraits, reels, albums, and framed prints"></span>
+                    <span class="typing-line hero-copy-line" data-text="with a clean edit style built for real family memories."></span>
+                </p>
                 <div class="hero-actions anim-slide-in" style="animation-delay: 0.45s;">
                     <button class="cta-btn" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Book Now</button>
                     <a class="hero-link" href="#gallery">View Gallery</a>
@@ -512,24 +521,32 @@
     <section id="booking" class="whatsapp-booking-section">
         <div class="container">
             <div class="booking-content">
+                <div class="booking-orbit booking-orbit-one" aria-hidden="true"></div>
+                <div class="booking-orbit booking-orbit-two" aria-hidden="true"></div>
+                <div class="booking-badge booking-badge-top">Fast Response</div>
+                <div class="booking-badge booking-badge-bottom">Premium Wedding Support</div>
                 <h2>Ready to Book Your Wedding?</h2>
                 <p class="booking-subtitle">Connect with us directly to discuss your requirements and get your perfect package</p>
                 
                 <div class="booking-actions">
                     <!-- WhatsApp Booking -->
                     <div class="booking-action-card booking-action-whatsapp">
+                        <div class="booking-card-glow" aria-hidden="true"></div>
                         <p class="booking-action-label">Quick Chat & Booking</p>
                         <a href="https://wa.me/919199076247" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
                             <i class="fab fa-whatsapp"></i> WhatsApp: 9199076247
                         </a>
+                        <p class="booking-action-note">Best for quick replies, package details, and date availability.</p>
                     </div>
                     
                     <!-- Phone Booking -->
                     <div class="booking-action-card booking-action-call">
+                        <div class="booking-card-glow" aria-hidden="true"></div>
                         <p class="booking-action-label">Direct Call</p>
                         <a href="tel:+919199076247" class="call-btn">
                             <i class="fas fa-phone"></i> +91-9199076247
                         </a>
+                        <p class="booking-action-note">Best for urgent bookings, custom plans, and instant discussion.</p>
                     </div>
                 </div>
                 
@@ -620,40 +637,93 @@
     <section class="testimonials-reviews">
         <div class="container">
             <h2>Client Reviews</h2>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Capture Creation Studio captured our special day perfectly. The team was professional, friendly, and creative. Highly recommended!"</p>
-                    <div class="testimonial-author">
-                        <strong>Priya & Rohit</strong>
-                        <span>Wedding - 2024</span>
+            <p class="testimonials-subtitle">Recent feedback from couples and families between 2024 and 2026.</p>
+            <div class="testimonials-slider" data-slider>
+                <div class="testimonials-viewport">
+                    <div class="testimonials-track">
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.5/5</span>
+                            </div>
+                            <p>"Team ne pura wedding day bahut smoothly cover kiya. Candid photos aur teaser dono family ko bahut pasand aaye."</p>
+                            <div class="testimonial-author"><strong>Priya & Rohit</strong><span>Wedding - 2024</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.6/5</span>
+                            </div>
+                            <p>"Album finishing premium thi aur video edit clean laga. Delivery updates bhi milte rahe, jo kaafi helpful tha."</p>
+                            <div class="testimonial-author"><strong>Anjali & Arjun</strong><span>Reception - 2024</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                <span class="testimonial-rating">4.3/5</span>
+                            </div>
+                            <p>"Haldi aur family portraits especially achhe aaye. Team calm thi aur elders ke saath bhi bahut respectfully coordinate kiya."</p>
+                            <div class="testimonial-author"><strong>Neha & Vikram</strong><span>Wedding - 2024</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.5/5</span>
+                            </div>
+                            <p>"Drone shots aur couple portraits standout rahe. Overall experience professional tha aur shots well planned the."</p>
+                            <div class="testimonial-author"><strong>Ritika & Saurav</strong><span>Wedding - 2025</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.4/5</span>
+                            </div>
+                            <p>"Reels short aur engaging the. Baraat aur stage entry ke moments bahut achhe timing ke saath capture hue."</p>
+                            <div class="testimonial-author"><strong>Shivani & Aman</strong><span>Wedding - 2025</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                <span class="testimonial-rating">4.3/5</span>
+                            </div>
+                            <p>"Traditional coverage ke saath candid balance sahi tha. Final photos me colors natural aur classy lage."</p>
+                            <div class="testimonial-author"><strong>Kajal & Deepak</strong><span>Engagement - 2025</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.6/5</span>
+                            </div>
+                            <p>"Parents ko mini album gift bahut pasand aaya. Team ne venue details aur decor ko bhi achhe se highlight kiya."</p>
+                            <div class="testimonial-author"><strong>Pooja & Nikhil</strong><span>Wedding - 2025</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.4/5</span>
+                            </div>
+                            <p>"Reception lighting difficult thi but output kaafi clean nikla. Highlight film ka music selection bhi achha tha."</p>
+                            <div class="testimonial-author"><strong>Muskan & Harsh</strong><span>Reception - 2026</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                <span class="testimonial-rating">4.3/5</span>
+                            </div>
+                            <p>"Team punctual thi aur poore function me active rahi. Family group photos quickly manage ho gaye."</p>
+                            <div class="testimonial-author"><strong>Sneha & Ravi</strong><span>Wedding - 2026</span></div>
+                        </article>
+                        <article class="testimonial-card">
+                            <div class="testimonial-topline">
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                <span class="testimonial-rating">4.5/5</span>
+                            </div>
+                            <p>"Couple shoot poses natural lag rahe the aur editing overdone nahi thi. Output premium feel ke saath mila."</p>
+                            <div class="testimonial-author"><strong>Komal & Aditya</strong><span>Wedding - 2026</span></div>
+                        </article>
                     </div>
                 </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Amazing cinematic videos and beautiful photos. The editing quality is top-notch. We are extremely happy with the final album!"</p>
-                    <div class="testimonial-author">
-                        <strong>Anjali & Arjun</strong>
-                        <span>Wedding - 2024</span>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"From pre-wedding shoots to the main event, they captured every moment with such grace and creativity. Truly exceptional work!"</p>
-                    <div class="testimonial-author">
-                        <strong>Neha & Vikram</strong>
-                        <span>Wedding - 2024</span>
-                    </div>
-                </div>
+                <div class="testimonials-dots" data-slider-dots aria-label="Review slider navigation"></div>
             </div>
         </div>
     </section>
@@ -661,8 +731,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content" style="text-align: center; display: block;">
-                <div class="footer-section">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
                     <div class="founder-profile">
                         <img src="images/founder-avishek.jpeg" alt="Founder Avishek AK" class="founder-image" loading="lazy" decoding="async">
                         <div class="founder-meta">
@@ -673,31 +743,34 @@
                     <h3>Capture Creation Studio</h3>
                     <p>Professional wedding photography services in Bhagalpur, Bihar.</p>
                     <p>Capturing memories, creating stories.</p>
-                    <p style="margin-top: 15px; font-weight: bold; font-size: 1.1rem;">Booking Contact</p>
-                    <p style="margin: 8px 0;"><a href="tel:+919199076247" style="color: #e74c3c; text-decoration: none; font-weight: bold; font-size: 1.2rem;">+91-9199076247</a></p>
-                    <p style="margin: 8px 0;"><a href="https://wa.me/919199076247" target="_blank" rel="noopener noreferrer" style="color: #25D366; text-decoration: none; font-weight: bold;">WhatsApp Us</a></p>
+                    <div class="footer-contact">
+                        <p class="footer-contact-label">Booking Contact</p>
+                        <p><a href="tel:+919199076247" class="footer-phone-link">+91-9199076247</a></p>
+                        <p><a href="https://wa.me/919199076247" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-link">WhatsApp Us</a></p>
+                    </div>
                 </div>
-                <div class="footer-section" style="margin-top: 20px;">
+                <div class="footer-section footer-links-panel">
                     <h4>Quick Links</h4>
-                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <div class="footer-quick-links">
                         <a href="#home">Home</a>
                         <a href="#packages">Packages</a>
                         <a href="#gallery">Gallery</a>
                         <a href="#booking">Booking</a>
                     </div>
                 </div>
-                <div class="footer-section" style="margin-top: 20px;">
+                <div class="footer-section footer-social-panel">
                     <h4>Follow Us</h4>
-                    <div class="social-links" style="justify-content: center;">
+                    <p>See our latest wedding reels, portraits, and behind-the-scenes studio work.</p>
+                    <div class="social-links">
                         <a href="https://www.instagram.com/it_s___avishek?igsh=ejRuOG1oN3NwNDlw" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom" style="text-align: center; margin-top: 20px;">
+            <div class="footer-bottom">
                 <p>&copy; 2026 Capture Creation Studio. All rights reserved.</p>
-                <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.8;">Website Designed & Developed by <strong>A K Friend PANDEY</strong></p>
+                <p class="footer-credit">Website Designed & Developed by <strong>A K Friend PANDEY</strong></p>
             </div>
         </div>
     </footer>
