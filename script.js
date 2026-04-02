@@ -613,7 +613,80 @@ document.addEventListener('keydown', function (event) {
     if (event.key === 'ArrowLeft') changeSlide(-1);
 });
 
+/* ============= DARK MODE THEME TOGGLE ============= */
+
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const themeIcon = themeToggle?.querySelector('.theme-icon');
+    
+    // Get saved theme or detect system preference
+    const getSavedTheme = () => {
+        return localStorage.getItem('theme');
+    };
+    
+    const getSystemTheme = () => {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    
+    // Initialize theme on page load
+    const initializeTheme = () => {
+        const savedTheme = getSavedTheme();
+        let theme;
+        
+        if (savedTheme) {
+            theme = savedTheme;
+        } else {
+            theme = getSystemTheme();
+            localStorage.setItem('theme', theme);
+        }
+        
+        applyTheme(theme);
+    };
+    
+    // Apply theme to document
+    const applyTheme = (theme) => {
+        if (theme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            if (themeIcon) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        } else {
+            htmlElement.removeAttribute('data-theme');
+            if (themeIcon) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+        localStorage.setItem('theme', theme);
+    };
+    
+    // Toggle theme
+    const toggleTheme = () => {
+        const currentTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+    };
+    
+    // Attach click event listener
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!getSavedTheme()) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+    
+    // Initialize on load
+    initializeTheme();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    initThemeToggle();
     initScrollReveal();
     initDeferredMedia();
     initMobileMenu();

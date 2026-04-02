@@ -449,11 +449,16 @@
                 <li><a href="#booking">Book Now</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark/light mode" title="Toggle Theme">
+                    <i class="fas fa-moon theme-icon"></i>
+                </button>
+                <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -503,22 +508,30 @@
             <p><strong>Capture Creation Studio</strong> is a well-known name in the field of wedding photography, based in <strong>Sabour, Bhagalpur, Bihar, India</strong>. We specialize in cinematic and candid wedding photography with state-of-the-art equipment and experienced professionals. With years of experience capturing precious moments, we deliver high-quality final edited videos and stunning albums within <strong>45-60 days</strong>.</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-video"></i>
+                    <div class="service-icon-wrapper">
+                        <i class="fas fa-video animated-service-icon"></i>
+                    </div>
                     <h3>Cinematic Videos</h3>
                     <p>Professional wedding videos with editing</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-camera-retro"></i>
+                    <div class="service-icon-wrapper">
+                        <i class="fas fa-camera animated-service-icon"></i>
+                    </div>
                     <h3>Candid Photography</h3>
                     <p>Authentic moments captured beautifully</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-drone"></i>
+                    <div class="service-icon-wrapper">
+                        <i class="fas fa-helicopter animated-service-icon"></i>
+                    </div>
                     <h3>Drone Coverage</h3>
                     <p>Aerial shots with cinematic gimbal</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-book"></i>
+                    <div class="service-icon-wrapper">
+                        <i class="fas fa-book-open animated-service-icon"></i>
+                    </div>
                     <h3>Premium Albums</h3>
                     <p>Custom printed wedding albums</p>
                 </div>
