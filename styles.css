@@ -189,6 +189,25 @@ html[data-theme="dark"] {
     animation: fadeSlideUp 0.6s 1.2s ease-out forwards;
 }
 
+/* Typing animation for preloader text */
+.preloader-studio.typing-text {
+    animation: none;
+    opacity: 1;
+    min-height: 1.2em;
+    display: inline-block;
+}
+
+.preloader-studio.typing-text::after {
+    content: '|';
+    animation: blinkCursor 0.7s step-end infinite;
+    color: #fff;
+    margin-left: 2px;
+}
+
+.preloader-studio.typing-text.done::after {
+    display: none;
+}
+
 .preloader-location {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.6);

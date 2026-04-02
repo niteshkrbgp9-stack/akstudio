@@ -87,12 +87,49 @@ function startPreloaderZoom() {
     preloader.classList.add('zoom-sequence');
 }
 
+// Function to type preloader text with color changes
+function typePreloaderText() {
+    var element = document.querySelector('.preloader-studio.typing-text');
+    if (!element) return;
+
+    var fullText = element.getAttribute('data-text') || 'Capture Creation Studio';
+    var colors = ['#ff6b6b', '#ffa500', '#ffd700', '#00ff00', '#00ffff', '#0099ff', '#9933ff', '#ff00ff'];
+    var charIndex = 0;
+    var targetLength = 0;
+    
+    element.textContent = '';
+    element.style.opacity = '1';
+
+    var typeInterval = window.setInterval(function () {
+        if (charIndex < fullText.length) {
+            var char = fullText[charIndex];
+            var span = document.createElement('span');
+            span.textContent = char;
+            
+            // Assign different color to each character
+            var colorIndex = (charIndex % colors.length);
+            span.style.color = colors[colorIndex];
+            
+            element.appendChild(span);
+            charIndex++;
+        } else {
+            window.clearInterval(typeInterval);
+            element.classList.add('done');
+        }
+    }, 50);
+}
+
 (function initPreloader() {
     var preloader = document.getElementById('preloader');
     if (!preloader) {
         startHeroAnimations();
         return;
     }
+
+    // Start typing text when preloader is ready
+    window.setTimeout(function () {
+        typePreloaderText();
+    }, 1200);
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var loadingDuration = reduceMotion ? 0 : 7000;
